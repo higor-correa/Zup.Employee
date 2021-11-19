@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  employee-api:
+    depends_on:
+      - sqlserver
+    build: ./src
+    ports:
+      - 8080:80
+      - 8081:443
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 1434:1433
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: employee@123

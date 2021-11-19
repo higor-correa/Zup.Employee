@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Zup.Employees.API/Zup.Employees.API.csproj", "Zup.Employees.API/"]
+COPY . .
 RUN dotnet restore "Zup.Employees.API/Zup.Employees.API.csproj"
 COPY . .
 WORKDIR "/src/Zup.Employees.API"

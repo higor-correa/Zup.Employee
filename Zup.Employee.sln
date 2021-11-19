@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zup.Employees.API", "Zup.Employees.API\Zup.Employees.API.csproj", "{6D632BC9-BB27-42DD-83CD-E140D33D6392}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zup.Employees.API", "src\Zup.Employees.API\Zup.Employees.API.csproj", "{6D632BC9-BB27-42DD-83CD-E140D33D6392}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zup.Employees.Domain", "src\Zup.Employees.Domain\Zup.Employees.Domain.csproj", "{F43CCB11-9201-49C0-B127-831E64A2EC3D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zup.Employees.Infra", "src\Zup.Employees.Infra\Zup.Employees.Infra.csproj", "{E866734D-7BB6-443E-8393-C58D1D7A6E7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zup.Employees.Application", "src\Zup.Employees.Application\Zup.Employees.Application.csproj", "{ED4E2B25-340F-4424-8118-E32607EABCAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{6D632BC9-BB27-42DD-83CD-E140D33D6392}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D632BC9-BB27-42DD-83CD-E140D33D6392}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D632BC9-BB27-42DD-83CD-E140D33D6392}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F43CCB11-9201-49C0-B127-831E64A2EC3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F43CCB11-9201-49C0-B127-831E64A2EC3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F43CCB11-9201-49C0-B127-831E64A2EC3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F43CCB11-9201-49C0-B127-831E64A2EC3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E866734D-7BB6-443E-8393-C58D1D7A6E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E866734D-7BB6-443E-8393-C58D1D7A6E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E866734D-7BB6-443E-8393-C58D1D7A6E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E866734D-7BB6-443E-8393-C58D1D7A6E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED4E2B25-340F-4424-8118-E32607EABCAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED4E2B25-340F-4424-8118-E32607EABCAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED4E2B25-340F-4424-8118-E32607EABCAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED4E2B25-340F-4424-8118-E32607EABCAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
