@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
   employee-api:
+    container_name: employee-api
     depends_on:
       - sqlserver
     build: ./src
@@ -12,6 +13,7 @@ services:
       ASPNETCORE_ENVIRONMENT: Docker
 
   sqlserver:
+    container_name: sqlserver
     image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
       - 1434:1433
