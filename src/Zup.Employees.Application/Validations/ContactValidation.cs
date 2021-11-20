@@ -30,7 +30,9 @@ public class ContactValidation : AbstractValidator<ContactDTO>
 
         RuleFor(x => x.EmployeeId)
             .NotEmpty()
-            .MustAsync(async (employeeId, _) => await employeeSearcher.GetAsync(employeeId) != null)
-            .WithMessage("Employee not found");
+            .DependentRules(() => RuleFor(x => x.EmployeeId)
+                                    .MustAsync(async (employeeId, _) => await employeeSearcher.GetAsync(employeeId) != null)
+                                    .WithMessage("Employee not found")
+        );
     }
 }
