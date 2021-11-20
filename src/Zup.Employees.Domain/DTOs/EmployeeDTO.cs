@@ -9,6 +9,6 @@
         public int PlateNumber { get; set; }
         public bool IsLeader { get; set; }
         public Guid LeaderId { get; set; }
-        public string LeaderName { get; set; }
+        public string? LeaderName { get; set; }
     }
 }

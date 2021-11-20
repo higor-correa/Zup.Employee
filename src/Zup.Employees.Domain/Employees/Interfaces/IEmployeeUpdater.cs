@@ -5,6 +5,6 @@ namespace Zup.Employees.Domain.Employees.Interfaces
 {
     public interface IEmployeeUpdater
     {
-        Task<Employee> UpdateAsync(EmployeeDTO updateEmployeeDTO);
+        Task<Employee?> UpdateAsync(EmployeeDTO updateEmployeeDTO);
     }
 }

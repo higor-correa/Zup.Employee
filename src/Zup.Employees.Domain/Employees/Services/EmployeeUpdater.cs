@@ -15,9 +15,13 @@ namespace Zup.Employees.Domain.Employees.Services
             _employeeSearcher = employeeSearcher;
         }
 
-        public async Task<Employee> UpdateAsync(EmployeeDTO updateEmployeeDTO)
+        public async Task<Employee?> UpdateAsync(EmployeeDTO updateEmployeeDTO)
         {
             var employee = await _employeeRepository.GetAsync(updateEmployeeDTO.Id);
+            if (employee == null)
+            {
+                return null;
+            }
 
             await UpdatePropertiesAsync(updateEmployeeDTO, employee!);
 

@@ -1,6 +1,6 @@
 ﻿using Zup.Employees.Domain.DTOs;
-using Zup.Employees.Domain.EmployeeContacts.Entities;
 using Zup.Employees.Domain.EmployeeContacts.Interfaces;
+using Zup.Employees.Domain.Mappings;
 
 namespace Zup.Employees.Application.Services.EmployeeContacts;
 
@@ -25,24 +25,28 @@ public class EmployeeContactFacade : IEmployeeContactFacade
         _contactSearcher = contactSearcher;
     }
 
-    public Task<IEnumerable<Contact>> GetAllFromEmployee(Guid employeeId)
+    public async Task<IEnumerable<ContactDTO>> GetAllFromEmployee(Guid employeeId)
     {
-        return _contactSearcher.GetAllFromEmployee(employeeId);
+        var contacts = await _contactSearcher.GetAllFromEmployee(employeeId);
+        return contacts.Select(x => x.ToDto());
     }
 
-    public Task<Contact?> GetAsync(Guid id)
+    public async Task<ContactDTO?> GetAsync(Guid id)
     {
-        return _contactSearcher.GetAsync(id);
+        var contact = await _contactSearcher.GetAsync(id);
+        return contact?.ToDto();
     }
 
-    public Task<Contact> CreateAsync(ContactDTO createEmployeeContactDTO)
+    public async Task<ContactDTO> CreateAsync(ContactDTO createEmployeeContactDTO)
     {
-        return _contactCreator.CreateAsync(createEmployeeContactDTO);
+        var contact = await _contactCreator.CreateAsync(createEmployeeContactDTO);
+        return contact.ToDto();
     }
 
-    public Task<Contact?> UpdateAsync(ContactDTO updateEmployeeContactDTO)
+    public async Task<ContactDTO?> UpdateAsync(ContactDTO updateEmployeeContactDTO)
     {
-        return _contactUpdater.UpdateAsync(updateEmployeeContactDTO);
+        var contact = await _contactUpdater.UpdateAsync(updateEmployeeContactDTO);
+        return contact?.ToDto();
     }
 
     public Task DeleteAsync(Guid id)

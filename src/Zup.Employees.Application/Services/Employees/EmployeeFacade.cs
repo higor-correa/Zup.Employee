@@ -1,6 +1,6 @@
 ﻿using Zup.Employees.Domain.DTOs;
-using Zup.Employees.Domain.Employees.Entities;
 using Zup.Employees.Domain.Employees.Interfaces;
+using Zup.Employees.Domain.Mappings;
 
 namespace Zup.Employees.Application.Services.Employees
 {
@@ -25,24 +25,29 @@ namespace Zup.Employees.Application.Services.Employees
             _employeeSearcher = employeeSearcher;
         }
 
-        public Task<IEnumerable<Employee>> GetAsync()
+        public async Task<IEnumerable<EmployeeDTO>> GetAsync()
         {
-            return _employeeSearcher.GetAsync();
+            var employees = await _employeeSearcher.GetAsync();
+            return employees.Select(x => x.ToDto());
+
         }
 
-        public Task<Employee?> GetAsync(Guid id)
+        public async Task<EmployeeDTO?> GetAsync(Guid id)
         {
-            return _employeeSearcher.GetAsync(id);
+            var employee = await _employeeSearcher.GetAsync(id);
+            return employee?.ToDto();
         }
 
-        public Task<Employee> CreateAsync(EmployeeDTO createEmployeeDTO)
+        public async Task<EmployeeDTO> CreateAsync(EmployeeDTO createEmployeeDTO)
         {
-            return _employeeCreator.CreateAsync(createEmployeeDTO);
+            var employee = await _employeeCreator.CreateAsync(createEmployeeDTO);
+            return employee.ToDto();
         }
 
-        public Task<Employee> UpdateAsync(EmployeeDTO updateEmployeeDTO)
+        public async Task<EmployeeDTO?> UpdateAsync(EmployeeDTO updateEmployeeDTO)
         {
-            return _employeeUpdater.UpdateAsync(updateEmployeeDTO);
+            var employee = await _employeeUpdater.UpdateAsync(updateEmployeeDTO);
+            return employee?.ToDto();
         }
 
         public Task DeleteAsync(Guid id)
