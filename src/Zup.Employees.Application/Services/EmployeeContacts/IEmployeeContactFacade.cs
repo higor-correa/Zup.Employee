@@ -9,4 +9,5 @@ public interface IEmployeeContactFacade
     Task<IEnumerable<ContactDTO>> GetAllFromEmployee(Guid employeeId);
     Task<ContactDTO?> GetAsync(Guid id);
     Task<ContactDTO?> UpdateAsync(ContactDTO updateEmployeeContactDTO);
+    Task DeleteAllFromEmployee(Guid employeeId);
 }

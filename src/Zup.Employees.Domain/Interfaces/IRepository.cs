@@ -6,6 +6,6 @@
         Task<TEntity?> GetAsync(Guid id);
         Task<TEntity> CreateAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
-        Task DeleteAsync(Guid id);
+        Task DeleteAsync(TEntity entity);
     }
 }

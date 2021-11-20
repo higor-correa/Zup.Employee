@@ -12,9 +12,9 @@ namespace Zup.Employees.Domain.EmployeeContacts.Services
             _contactRepository = contactRepository;
         }
 
-        public Task<IEnumerable<Contact>> GetAllFromEmployee(Guid employeeId)
+        public Task<IEnumerable<Contact>> GetAllFromEmployeeAsync(Guid employeeId)
         {
-            return _contactRepository.GetAllFromEmployee(employeeId);
+            return _contactRepository.GetAllFromEmployeeAsync(employeeId);
         }
 
         public Task<Contact?> GetAsync(Guid id)

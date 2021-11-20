@@ -5,6 +5,6 @@ namespace Zup.Employees.Domain.EmployeeContacts.Interfaces
     public interface IEmployeeContactSearcher
     {
         Task<Contact?> GetAsync(Guid id);
-        Task<IEnumerable<Contact>> GetAllFromEmployee(Guid employeeId);
+        Task<IEnumerable<Contact>> GetAllFromEmployeeAsync(Guid employeeId);
     }
 }

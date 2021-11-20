@@ -23,9 +23,8 @@ public abstract class RepositoryBase<TEntity> : IRepository<TEntity> where TEnti
         return entry.Entity;
     }
 
-    public Task DeleteAsync(Guid id)
+    public Task DeleteAsync(TEntity entity)
     {
-        var entity = new TEntity() { Id = id };
         Set.Remove(entity);
         return Task.CompletedTask;
     }

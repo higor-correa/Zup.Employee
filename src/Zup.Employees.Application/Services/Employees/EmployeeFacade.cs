@@ -1,4 +1,5 @@
-﻿using Zup.Employees.Domain.DTOs;
+﻿using Zup.Employees.Application.Services.EmployeeContacts;
+using Zup.Employees.Domain.DTOs;
 using Zup.Employees.Domain.Employees.Interfaces;
 using Zup.Employees.Domain.Mappings;
 
@@ -10,19 +11,22 @@ namespace Zup.Employees.Application.Services.Employees
         private readonly IEmployeeUpdater _employeeUpdater;
         private readonly IEmployeeRemover _employeeRemover;
         private readonly IEmployeeSearcher _employeeSearcher;
+        private readonly IEmployeeContactFacade _employeeContactFacade;
 
         public EmployeeFacade
         (
             IEmployeeCreator employeeCreator,
             IEmployeeUpdater employeeUpdater,
             IEmployeeRemover employeeRemover,
-            IEmployeeSearcher employeeSearcher
+            IEmployeeSearcher employeeSearcher,
+            IEmployeeContactFacade employeeContactFacade
         )
         {
             _employeeCreator = employeeCreator;
             _employeeUpdater = employeeUpdater;
             _employeeRemover = employeeRemover;
             _employeeSearcher = employeeSearcher;
+            _employeeContactFacade = employeeContactFacade;
         }
 
         public async Task<IEnumerable<EmployeeDTO>> GetAsync()
@@ -50,9 +54,11 @@ namespace Zup.Employees.Application.Services.Employees
             return employee?.ToDto();
         }
 
-        public Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
-            return _employeeRemover.DeleteAsync(id);
+            await _employeeContactFacade.DeleteAllFromEmployee(id);
+
+            await _employeeRemover.DeleteAsync(id);
         }
     }
 }

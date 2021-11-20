@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zup.Employees.Domain", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zup.Employees.Infra", "src\Zup.Employees.Infra\Zup.Employees.Infra.csproj", "{E866734D-7BB6-443E-8393-C58D1D7A6E7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zup.Employees.Application", "src\Zup.Employees.Application\Zup.Employees.Application.csproj", "{ED4E2B25-340F-4424-8118-E32607EABCAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zup.Employees.Application", "src\Zup.Employees.Application\Zup.Employees.Application.csproj", "{ED4E2B25-340F-4424-8118-E32607EABCAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zup.Employees.Tests", "Zup.Employees.Tests\Zup.Employees.Tests.csproj", "{A0CA9F9E-90B6-40C5-ADF3-D228B9513561}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{ED4E2B25-340F-4424-8118-E32607EABCAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED4E2B25-340F-4424-8118-E32607EABCAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED4E2B25-340F-4424-8118-E32607EABCAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0CA9F9E-90B6-40C5-ADF3-D228B9513561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0CA9F9E-90B6-40C5-ADF3-D228B9513561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0CA9F9E-90B6-40C5-ADF3-D228B9513561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0CA9F9E-90B6-40C5-ADF3-D228B9513561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

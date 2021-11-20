@@ -10,7 +10,7 @@ public class EmployeeContactRepository : RepositoryBase<Contact>, IEmployeeConta
     {
     }
 
-    public async Task<IEnumerable<Contact>> GetAllFromEmployee(Guid employeeId)
+    public async Task<IEnumerable<Contact>> GetAllFromEmployeeAsync(Guid employeeId)
     {
         return await Set.Where(x => x.EmployeeId == employeeId).ToListAsync();
     }

@@ -16,8 +16,8 @@ public class EmployeeMapping : IEntityTypeConfiguration<Employee>
         builder.Property(x => x.IsLeader);
 
         builder.HasMany(x => x.Contacts)
-               .WithOne(x=>x.Employee)
-               .HasForeignKey(x=>x.EmployeeId);
+               .WithOne(x => x.Employee)
+               .HasForeignKey(x => x.EmployeeId);
 
         builder.HasIndex(x => x.PlateNumber).IsUnique();
     }

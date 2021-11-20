@@ -1,19 +1,23 @@
 ﻿using Zup.Employees.Domain.Employees.Interfaces;
 
-namespace Zup.Employees.Domain.Employees.Services
+namespace Zup.Employees.Domain.Employees.Services;
+
+public class EmployeeRemover : IEmployeeRemover
 {
-    public class EmployeeRemover : IEmployeeRemover
+    private readonly IEmployeeRepository _employeeRepository;
+
+    public EmployeeRemover(IEmployeeRepository employeeRepository)
     {
-        private readonly IEmployeeRepository _employeeRepository;
+        _employeeRepository = employeeRepository;
+    }
 
-        public EmployeeRemover(IEmployeeRepository employeeRepository)
-        {
-            _employeeRepository = employeeRepository;
-        }
+    public async Task DeleteAsync(Guid id)
+    {
+        var employee = await _employeeRepository.GetAsync(id);
 
-        public Task DeleteAsync(Guid id)
+        if (employee != null)
         {
-            return _employeeRepository.DeleteAsync(id);
+            await _employeeRepository.DeleteAsync(employee);
         }
     }
 }

@@ -27,7 +27,7 @@ public class EmployeeContactFacade : IEmployeeContactFacade
 
     public async Task<IEnumerable<ContactDTO>> GetAllFromEmployee(Guid employeeId)
     {
-        var contacts = await _contactSearcher.GetAllFromEmployee(employeeId);
+        var contacts = await _contactSearcher.GetAllFromEmployeeAsync(employeeId);
         return contacts.Select(x => x.ToDto());
     }
 
@@ -52,5 +52,10 @@ public class EmployeeContactFacade : IEmployeeContactFacade
     public Task DeleteAsync(Guid id)
     {
         return _contactRemover.DeleteAsync(id);
+    }
+
+    public Task DeleteAllFromEmployee(Guid employeeId)
+    {
+        return _contactRemover.DeleteAllFromEmployee(employeeId);
     }
 }
