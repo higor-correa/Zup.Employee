@@ -16,12 +16,15 @@ namespace Zup.Employees.API.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ContactDTO[]))]
         public async Task<IActionResult> GetAll(Guid employeeId)
         {
             return Ok(await _contactFacade.GetAllFromEmployee(employeeId));
         }
 
         [HttpGet("{id}", Name = nameof(EmployeeContactController) + nameof(Details))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ContactDTO))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Details(Guid id)
         {
             var contact = await _contactFacade.GetAsync(id);
@@ -32,6 +35,8 @@ namespace Zup.Employees.API.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(ContactDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create(Guid employeeId, ContactDTO createContactDTO)
         {
             if (!ModelState.IsValid)
@@ -47,6 +52,8 @@ namespace Zup.Employees.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Edit(Guid employeeId, Guid id, ContactDTO contactDTO)
         {
             if (!ModelState.IsValid)
@@ -65,6 +72,7 @@ namespace Zup.Employees.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _contactFacade.DeleteAsync(id);
