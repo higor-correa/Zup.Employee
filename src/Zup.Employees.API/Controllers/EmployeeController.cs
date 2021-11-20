@@ -34,14 +34,24 @@ namespace Zup.Employees.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(EmployeeDTO createEmployeeDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             var employee = await _employeeFacade.CreateAsync(createEmployeeDTO);
 
-            return CreatedAtAction(nameof(EmployeeContactController) + nameof(Details), new { id = employee.Id });
+            return CreatedAtRoute(nameof(EmployeeController) + nameof(Details), new { id = employee.Id }, employee);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit(Guid id, EmployeeDTO employeeDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             employeeDTO.Id = id;
             await _employeeFacade.UpdateAsync(employeeDTO);
             return NoContent();

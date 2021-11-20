@@ -24,26 +24,36 @@ namespace Zup.Employees.API.Controllers
         [HttpGet("{id}", Name = nameof(EmployeeContactController) + nameof(Details))]
         public async Task<IActionResult> Details(Guid id)
         {
-            var employee = await _contactFacade.GetAsync(id);
+            var contact = await _contactFacade.GetAsync(id);
 
-            return employee == null
+            return contact == null
                     ? NotFound()
-                    : Ok(employee);
+                    : Ok(contact);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(Guid employeeId, ContactDTO createContactDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             createContactDTO.EmployeeId = employeeId;
 
             var contact = await _contactFacade.CreateAsync(createContactDTO);
 
-            return CreatedAtAction(nameof(EmployeeContactController) + nameof(Details), new { employeeId, id = contact.Id });
+            return CreatedAtRoute(nameof(EmployeeContactController) + nameof(Details), new { employeeId, id = contact.Id }, contact);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Edit(Guid employeeId, Guid id, ContactDTO contactDTO)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             contactDTO.EmployeeId = employeeId;
             contactDTO.Id = id;
 

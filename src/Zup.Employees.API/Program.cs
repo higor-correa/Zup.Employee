@@ -1,6 +1,8 @@
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Zup.Employees.Application.Services.EmployeeContacts;
 using Zup.Employees.Application.Services.Employees;
+using Zup.Employees.Application.Validations;
 using Zup.Employees.Domain.EmployeeContacts.Interfaces;
 using Zup.Employees.Domain.EmployeeContacts.Services;
 using Zup.Employees.Domain.Employees.Interfaces;
@@ -16,6 +18,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddMvc()
+                .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<EmployeeValidation>());
 
 builder.Services.AddScoped<IEmployeeFacade, EmployeeFacade>();
 builder.Services.AddScoped<IEmployeeContactFacade, EmployeeContactFacade>();
