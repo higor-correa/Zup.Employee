@@ -23,5 +23,10 @@ namespace Zup.Employees.Domain.Employees.Services
                 ? Task.FromResult(default(Employee))
                 : _employeeRepository.GetAsync(id);
         }
+
+        public Task<Employee?> GetForLoginAsync(string email, string passwordHashed)
+        {
+            return _employeeRepository.GetForLoginAsync(email, passwordHashed);
+        }
     }
 }

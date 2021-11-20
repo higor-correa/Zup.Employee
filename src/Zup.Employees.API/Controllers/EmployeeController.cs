@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Zup.Employees.Application.Services.Employees;
 using Zup.Employees.Domain.DTOs;
 
@@ -6,6 +7,7 @@ namespace Zup.Employees.API.Controllers
 {
     [ApiController]
     [Route("api/v1/employee")]
+    [Authorize]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeFacade _employeeFacade;

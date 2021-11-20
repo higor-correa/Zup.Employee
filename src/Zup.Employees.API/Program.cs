@@ -1,7 +1,11 @@
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using Zup.Employees.Application.Services.EmployeeContacts;
 using Zup.Employees.Application.Services.Employees;
+using Zup.Employees.Application.Services.Security;
 using Zup.Employees.Application.Validations;
 using Zup.Employees.Domain.EmployeeContacts.Interfaces;
 using Zup.Employees.Domain.EmployeeContacts.Services;
@@ -9,6 +13,11 @@ using Zup.Employees.Domain.Employees.Interfaces;
 using Zup.Employees.Domain.Employees.Services;
 using Zup.Employees.Infra;
 using Zup.Employees.Infra.Repositories;
+using Zup.Employees.Security.Domain;
+using Zup.Employees.Security.Domain.Configurations;
+using Zup.Employees.Security.Domain.Interfaces;
+using Zup.Employees.Security.Domain.Tokens.Interfaces;
+using Zup.Employees.Security.Domain.Tokens.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +30,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddMvc()
                 .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<EmployeeValidation>());
+#region Microservice DI
+
+builder.Services.AddOptions<JwtSettings>();
 
 builder.Services.AddScoped<IEmployeeFacade, EmployeeFacade>();
 builder.Services.AddScoped<IEmployeeContactFacade, EmployeeContactFacade>();
@@ -38,15 +50,41 @@ builder.Services.AddScoped<IEmployeeContactUpdater, ContactUpdater>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeContactRepository, EmployeeContactRepository>();
 
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+
+#endregion
+
 builder.Services.AddDbContext<EmployeeContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeContextConnection")));
 
+#region AuthorizationConfigs
+
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(opt => opt.TokenValidationParameters = new()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
+                    ValidAudience = builder.Configuration["JwtSettings:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]))
+                });
+
+#endregion
+
 var app = builder.Build();
+
+#region Database Migrations
 
 using var provider = app.Services.CreateScope();
 var context = provider.ServiceProvider.GetRequiredService<EmployeeContext>();
 context.Database.Migrate();
 
-// Configure the HTTP request pipeline.
+#endregion
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -55,7 +93,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+#region Authorization Configs
+
+app.UseAuthentication();
 app.UseAuthorization();
+
+#endregion
 
 app.MapControllers();
 

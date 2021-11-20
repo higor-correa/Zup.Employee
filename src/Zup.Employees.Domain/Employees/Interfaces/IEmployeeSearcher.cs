@@ -6,5 +6,6 @@ namespace Zup.Employees.Domain.Employees.Interfaces
     {
         Task<IEnumerable<Employee>> GetAsync();
         Task<Employee?> GetAsync(Guid id);
+        Task<Employee?> GetForLoginAsync(string email, string passwordHashed);
     }
 }

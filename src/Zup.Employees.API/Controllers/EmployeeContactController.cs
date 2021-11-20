@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Zup.Employees.Application.Services.EmployeeContacts;
 using Zup.Employees.Domain.DTOs;
 
@@ -6,6 +7,7 @@ namespace Zup.Employees.API.Controllers
 {
     [ApiController]
     [Route("api/v1/employee/{employeeId}/contact")]
+    [Authorize]
     public class EmployeeContactController : ControllerBase
     {
         private readonly IEmployeeContactFacade _contactFacade;

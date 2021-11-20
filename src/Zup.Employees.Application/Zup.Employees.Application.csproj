@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Zup.Employees.Domain\Zup.Employees.Domain.csproj" />
+    <ProjectReference Include="..\Zup.Employees.Security.Domain\Zup.Employees.Security.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 ﻿using Zup.Employees.Domain.DTOs;
+using Zup.Employees.Domain.Employees.Entities;
 
 namespace Zup.Employees.Application.Services.Employees
 {
