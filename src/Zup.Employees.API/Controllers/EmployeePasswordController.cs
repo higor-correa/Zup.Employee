@@ -30,7 +30,7 @@ public class EmployeePasswordController : ControllerBase
         return NoContent();
     }
 
-    [HttpPut]
+    [HttpPost]
     [AllowAnonymous]
     public async Task<IActionResult> CreatePasswordAsync([FromBody] CreatePasswordDTO changePasswordDTO)
     {

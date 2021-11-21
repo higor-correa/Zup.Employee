@@ -105,7 +105,6 @@ app.UseAuthorization();
 #endregion
 
 app.UseMiddleware<ContextMiddleware>();
-app.UseResponseCompression();
 
 app.MapControllers();
 
