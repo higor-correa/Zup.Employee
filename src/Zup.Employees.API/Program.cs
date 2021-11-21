@@ -34,12 +34,15 @@ builder.Services.AddMvc()
 
 #region Microservice DI
 
-builder.Services.AddOptions<JwtSettings>();
+builder.Services.AddOptions<JwtSettings>().Bind(builder.Configuration.GetSection("JwtSettings"));
 
 builder.Services.AddScoped<ContextMiddleware>();
 
+builder.Services.AddScoped<ILoginFacade, LoginFacade>();
 builder.Services.AddScoped<IEmployeeFacade, EmployeeFacade>();
 builder.Services.AddScoped<IEmployeeContactFacade, EmployeeContactFacade>();
+
+builder.Services.AddScoped<ILoginService, LoginService>();
 
 builder.Services.AddScoped<IEmployeeCreator, EmployeeCreator>();
 builder.Services.AddScoped<IEmployeeRemover, EmployeeRemover>();
