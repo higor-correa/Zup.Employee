@@ -2,6 +2,8 @@
 using Zup.Employees.Domain.DTOs;
 using Zup.Employees.Domain.Employees.Interfaces;
 using Zup.Employees.Domain.Mappings;
+using Zup.Employees.Security.Domain.DTOs;
+using Zup.Employees.Security.Domain.Interfaces;
 
 namespace Zup.Employees.Application.Services.Employees
 {
@@ -12,6 +14,7 @@ namespace Zup.Employees.Application.Services.Employees
         private readonly IEmployeeRemover _employeeRemover;
         private readonly IEmployeeSearcher _employeeSearcher;
         private readonly IEmployeeContactFacade _employeeContactFacade;
+        private readonly IPasswordHasher _passwordHasher;
 
         public EmployeeFacade
         (
@@ -19,7 +22,8 @@ namespace Zup.Employees.Application.Services.Employees
             IEmployeeUpdater employeeUpdater,
             IEmployeeRemover employeeRemover,
             IEmployeeSearcher employeeSearcher,
-            IEmployeeContactFacade employeeContactFacade
+            IEmployeeContactFacade employeeContactFacade,
+            IPasswordHasher passwordHasher
         )
         {
             _employeeCreator = employeeCreator;
@@ -27,6 +31,7 @@ namespace Zup.Employees.Application.Services.Employees
             _employeeRemover = employeeRemover;
             _employeeSearcher = employeeSearcher;
             _employeeContactFacade = employeeContactFacade;
+            _passwordHasher = passwordHasher;
         }
 
         public async Task<IEnumerable<EmployeeDTO>> GetAsync()
@@ -59,6 +64,24 @@ namespace Zup.Employees.Application.Services.Employees
             await _employeeContactFacade.DeleteAllFromEmployee(id);
 
             await _employeeRemover.DeleteAsync(id);
+        }
+
+        public async Task ChangePasswordAsync(ChangePasswordDTO changePasswordDTO)
+        {
+            var employee = await _employeeSearcher.GetForLoginAsync(changePasswordDTO.Email, _passwordHasher.HashPassword(changePasswordDTO.OldPassword));
+            if (employee != null)
+            {
+                employee.UpdatePassword(_passwordHasher.HashPassword(changePasswordDTO.NewPassword));
+            }
+        }
+
+        public async Task CreatePasswordAsync(CreatePasswordDTO createPasswordDTO)
+        {
+            var employee = await _employeeSearcher.GetForLoginAsync(createPasswordDTO.Email, string.Empty);
+            if (employee != null)
+            {
+                employee.UpdatePassword(_passwordHasher.HashPassword(createPasswordDTO.Password));
+            }
         }
     }
 }

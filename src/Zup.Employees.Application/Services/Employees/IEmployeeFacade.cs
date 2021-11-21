@@ -1,5 +1,6 @@
 ﻿using Zup.Employees.Domain.DTOs;
 using Zup.Employees.Domain.Employees.Entities;
+using Zup.Employees.Security.Domain.DTOs;
 
 namespace Zup.Employees.Application.Services.Employees
 {
@@ -10,5 +11,7 @@ namespace Zup.Employees.Application.Services.Employees
         Task<IEnumerable<EmployeeDTO>> GetAsync();
         Task<EmployeeDTO?> GetAsync(Guid id);
         Task<EmployeeDTO?> UpdateAsync(EmployeeDTO updateEmployeeDTO);
+        Task ChangePasswordAsync(ChangePasswordDTO changePasswordDTO);
+        Task CreatePasswordAsync(CreatePasswordDTO createPasswordDTO);
     }
 }

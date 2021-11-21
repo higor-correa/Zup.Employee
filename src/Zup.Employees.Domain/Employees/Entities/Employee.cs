@@ -12,8 +12,7 @@ namespace Zup.Employees.Domain.Employees.Entities
             Surname = surname;
             Email = email;
             PlateNumber = plateNumber;
-            PasswordHash = passwordHash;
-            IsLeader = isLeader;
+            PasswordHash = passwordHash ?? string.Empty;
             IsLeader = isLeader;
             Leader = leader;
         }
@@ -26,5 +25,10 @@ namespace Zup.Employees.Domain.Employees.Entities
         public bool IsLeader { get; set; }
         public Employee? Leader { get; set; }
         public ICollection<Contact> Contacts { get; set; } = new Collection<Contact>();
+
+        public void UpdatePassword(string passwordHashed)
+        {
+            PasswordHash = passwordHashed;
+        }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Zup.Employees.API.Configurations;
 using Zup.Employees.Application.Services.EmployeeContacts;
 using Zup.Employees.Application.Services.Employees;
 using Zup.Employees.Application.Services.Security;
@@ -30,9 +31,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddMvc()
                 .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<EmployeeValidation>());
+
 #region Microservice DI
 
 builder.Services.AddOptions<JwtSettings>();
+
+builder.Services.AddScoped<ContextMiddleware>();
 
 builder.Services.AddScoped<IEmployeeFacade, EmployeeFacade>();
 builder.Services.AddScoped<IEmployeeContactFacade, EmployeeContactFacade>();
@@ -99,6 +103,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 #endregion
+
+app.UseMiddleware<ContextMiddleware>();
+app.UseResponseCompression();
 
 app.MapControllers();
 

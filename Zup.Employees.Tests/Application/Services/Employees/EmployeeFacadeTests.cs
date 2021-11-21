@@ -4,6 +4,8 @@ using Zup.Employees.Application.Services.Employees;
 using Zup.Employees.Domain.DTOs;
 using Zup.Employees.Domain.Employees.Entities;
 using Zup.Employees.Domain.Employees.Interfaces;
+using Zup.Employees.Security.Domain.DTOs;
+using Zup.Employees.Security.Domain.Interfaces;
 
 namespace Zup.Employees.Tests.Application.Services.Employees;
 
@@ -14,6 +16,7 @@ public class EmployeeFacadeTests
     private readonly IEmployeeRemover _employeeRemoverMock;
     private readonly IEmployeeSearcher _employeeSearcherMock;
     private readonly IEmployeeContactFacade _employeeContactFacade;
+    private readonly IPasswordHasher _passwordHasher;
     private readonly Fixture _fixture;
     private readonly EmployeeFacade _employeeFacade;
 
@@ -24,10 +27,11 @@ public class EmployeeFacadeTests
         _employeeRemoverMock = Substitute.For<IEmployeeRemover>();
         _employeeSearcherMock = Substitute.For<IEmployeeSearcher>();
         _employeeContactFacade = Substitute.For<IEmployeeContactFacade>();
+        _passwordHasher = Substitute.For<IPasswordHasher>();
 
         _fixture = FixtureHelper.CreateFixture();
 
-        _employeeFacade = new EmployeeFacade(_employeeCreatorMock, _employeeUpdaterMock, _employeeRemoverMock, _employeeSearcherMock, _employeeContactFacade);
+        _employeeFacade = new EmployeeFacade(_employeeCreatorMock, _employeeUpdaterMock, _employeeRemoverMock, _employeeSearcherMock, _employeeContactFacade, _passwordHasher);
     }
 
     [Fact]
@@ -93,5 +97,69 @@ public class EmployeeFacadeTests
 
         act.Should().BeEquivalentTo(expected, opt => opt.ExcludingMissingMembers());
         await _employeeSearcherMock.Received(1).GetAsync(expected.Id);
+    }
+
+    [Fact]
+    public async Task Should_Update_Employee_Password()
+    {
+        var employee = _fixture.Create<Employee>();
+        var changePasswordDTO = _fixture.Create<ChangePasswordDTO>();
+        changePasswordDTO.Email = employee.Email;
+
+        var oldPassHash = changePasswordDTO.OldPassword + "hash";
+        var expectated = changePasswordDTO.NewPassword + "hash";
+
+        _passwordHasher.HashPassword(changePasswordDTO.OldPassword).Returns(oldPassHash);
+        _passwordHasher.HashPassword(changePasswordDTO.NewPassword).Returns(expectated);
+
+        _employeeSearcherMock.GetForLoginAsync(changePasswordDTO.Email, oldPassHash).Returns(employee);
+
+        await _employeeFacade.ChangePasswordAsync(changePasswordDTO);
+
+        employee.PasswordHash.Should().Be(expectated);
+    }
+
+    [Fact]
+    public async Task Should_Not_Find_Employee_To_Change_Password()
+    {
+        var employee = _fixture.Create<Employee>();
+        var changePasswordDTO = _fixture.Create<ChangePasswordDTO>();
+
+        var expectated = employee.PasswordHash;
+
+        await _employeeFacade.ChangePasswordAsync(changePasswordDTO);
+
+        employee.PasswordHash.Should().Be(expectated);
+    }
+
+    [Fact]
+    public async Task Should_Create_Employee_Password()
+    {
+        var employee = _fixture.Create<Employee>();
+        var changePasswordDTO = _fixture.Create<CreatePasswordDTO>();
+        changePasswordDTO.Email = employee.Email;
+
+        var expectated = changePasswordDTO.Password + "hash";
+
+        _passwordHasher.HashPassword(changePasswordDTO.Password).Returns(expectated);
+
+        _employeeSearcherMock.GetForLoginAsync(changePasswordDTO.Email, string.Empty).Returns(employee);
+
+        await _employeeFacade.CreatePasswordAsync(changePasswordDTO);
+
+        employee.PasswordHash.Should().Be(expectated);
+    }
+
+    [Fact]
+    public async Task Should_Not_Create_Employee_Password()
+    {
+        var employee = _fixture.Create<Employee>();
+        var changePasswordDTO = _fixture.Create<CreatePasswordDTO>();
+
+        var expectated = employee.PasswordHash;
+
+        await _employeeFacade.CreatePasswordAsync(changePasswordDTO);
+
+        employee.PasswordHash.Should().Be(expectated);
     }
 }
