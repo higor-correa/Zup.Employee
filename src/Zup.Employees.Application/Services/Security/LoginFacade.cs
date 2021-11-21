@@ -1,4 +1,5 @@
-﻿using Zup.Employees.Security.Domain.Interfaces;
+﻿using Zup.Employees.Domain.DTOs;
+using Zup.Employees.Security.Domain.Interfaces;
 
 namespace Zup.Employees.Application.Services.Security;
 
@@ -11,8 +12,8 @@ public class LoginFacade : ILoginFacade
         _loginService = loginService;
     }
 
-    public Task<string> AuthenticateAsync(string email, string password, IEnumerable<string> roles)
+    public Task<string> AuthenticateAsync(LoginDTO loginDTO)
     {
-        return _loginService.AuthenticateAsync(email, password, roles);
+        return _loginService.AuthenticateAsync(loginDTO);
     }
 }

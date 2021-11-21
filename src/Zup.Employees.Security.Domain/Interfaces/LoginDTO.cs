@@ -1,4 +1,4 @@
-﻿namespace Zup.Employees.Domain.DTOs;
+﻿namespace Zup.Employees.Security.Domain.Interfaces;
 
 public class LoginDTO
 {

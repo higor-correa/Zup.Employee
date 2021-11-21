@@ -2,5 +2,5 @@
 
 public interface ILoginService
 {
-    Task<string> AuthenticateAsync(string email, string password, IEnumerable<string> roles);
+    Task<string> AuthenticateAsync(LoginDTO loginDTO);
 }

@@ -16,11 +16,11 @@ public class LoginService : ILoginService
         _passwordHasher = passwordHasher;
     }
 
-    public async Task<string> AuthenticateAsync(string email, string password, IEnumerable<string> roles)
+    public async Task<string> AuthenticateAsync(LoginDTO loginDTO)
     {
-        var user = await _userService.GetUserAsync(email, _passwordHasher.HashPassword(password));
+        var user = await _userService.GetUserAsync(loginDTO.Email, _passwordHasher.HashPassword(loginDTO.Password));
 
-        return user == null ? string.Empty 
-                            : _tokenService.BuildToken(user, roles);
+        return user == null ? string.Empty
+                            : _tokenService.BuildToken(user, Enumerable.Empty<string>());
     }
 }

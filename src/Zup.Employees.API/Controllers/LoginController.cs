@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Zup.Employees.Application.Services.Security;
+using Zup.Employees.Security.Domain.Interfaces;
 
 namespace Zup.Employees.API.Controllers;
 
 [AllowAnonymous]
 [ApiController]
+[Route("api/[controller]")]
 public class LoginController : ControllerBase
 {
     private readonly ILoginFacade _loginFacade;
@@ -18,9 +20,9 @@ public class LoginController : ControllerBase
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<IActionResult> LoginAsync([FromBody] string email, [FromBody] string password, [FromBody] List<string> roles)
+    public async Task<IActionResult> LoginAsync(LoginDTO loginDTO)
     {
-        var token = await _loginFacade.AuthenticateAsync(email, password, roles);
+        var token = await _loginFacade.AuthenticateAsync(loginDTO);
 
         return string.IsNullOrWhiteSpace(token)
                     ? Unauthorized()
