@@ -16,8 +16,10 @@ public class EmployeePasswordController : ControllerBase
         _employeeFacade = employeeFacade;
     }
 
-    [HttpPut]
     [Authorize]
+    [HttpPut]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> ChangePasswordAsync([FromBody] ChangePasswordDTO changePasswordDTO)
     {
         if (!ModelState.IsValid)
@@ -30,8 +32,10 @@ public class EmployeePasswordController : ControllerBase
         return NoContent();
     }
 
-    [HttpPost]
     [AllowAnonymous]
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> CreatePasswordAsync([FromBody] CreatePasswordDTO changePasswordDTO)
     {
         if (!ModelState.IsValid)
