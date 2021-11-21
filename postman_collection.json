@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0e8e535c-e0b1-42ec-9a75-221c8bcea669",
+		"_postman_id": "18f7fd7d-9c4f-41b1-b58f-a68a5547d90a",
 		"name": "Zup.Employees.API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,198 +9,7 @@
 			"name": "Employee",
 			"item": [
 				{
-					"name": "Contact",
-					"item": [
-						{
-							"name": "Get All Contacts",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"employee",
-										":employeeId",
-										"contact"
-									],
-									"variable": [
-										{
-											"key": "employeeId",
-											"value": "",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create Contact",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": \"urn:uuid:6d10a7a3-1c58-fe37-37b0-cb58bbe546ee\",\n    \"number\": \"dolor consectetur nul\",\n    \"employeeId\": \"urn:uuid:7b5e0c0b-eb2d-1744-0693-334328c3c14c\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"employee",
-										":employeeId",
-										"contact"
-									],
-									"variable": [
-										{
-											"key": "employeeId",
-											"value": "",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Contact Details",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact/:id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"employee",
-										":employeeId",
-										"contact",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "employeeId",
-											"value": "",
-											"description": "(Required) "
-										},
-										{
-											"key": "id",
-											"value": "",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Update Contact",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": \"urn:uuid:6d10a7a3-1c58-fe37-37b0-cb58bbe546ee\",\n    \"number\": \"dolor consectetur nul\",\n    \"employeeId\": \"urn:uuid:7b5e0c0b-eb2d-1744-0693-334328c3c14c\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact/:id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"employee",
-										":employeeId",
-										"contact",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "employeeId",
-											"value": "",
-											"description": "(Required) "
-										},
-										{
-											"key": "id",
-											"value": "",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Contact",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact/:id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"employee",
-										":employeeId",
-										"contact",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "employeeId",
-											"value": "",
-											"description": "(Required) "
-										},
-										{
-											"key": "id",
-											"value": "",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Get All Employees",
+					"name": "/api/v1/employee",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -216,10 +25,40 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": \"57815f73-7397-0e94-ea42-f70c0fc1ff22\",\n  \"name\": \"c\",\n  \"surname\": \"voluptate ex dolor anim\",\n  \"email\": \"consectetur veniam esse\",\n  \"plateNumber\": -15744828,\n  \"isLeader\": false,\n  \"leaderId\": \"5e77fd5b-d01b-3d0c-79da-7d770826f773\",\n  \"leaderName\": \"eiusmod ut tempor\"\n },\n {\n  \"id\": \"urn:uuid:34855432-4533-bbca-23c6-da8bab0aed85\",\n  \"name\": \"amet Lorem pariatur eiusmod\",\n  \"surname\": \"dolore ea \",\n  \"email\": \"laboris elit\",\n  \"plateNumber\": 14429785,\n  \"isLeader\": true,\n  \"leaderId\": \"urn:uuid:36b3c559-17d8-9780-4c8e-c3e4cbd5bb02\",\n  \"leaderName\": \"reprehenderit id do voluptate incididunt\"\n }\n]"
+						}
+					]
 				},
 				{
-					"name": "Create Employee",
+					"name": "/api/v1/employee",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -230,7 +69,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"c5b627d7-1856-422f-899b-0990385dac66\",\n    \"name\": \"dolor irure in ex sunt\",\n    \"surname\": \"elit culpa nulla est magna\",\n    \"email\": \"in veniam non\",\n    \"plateNumber\": 11625964,\n    \"isLeader\": false,\n    \"leaderId\": \"urn:uuid:f47a1496-149f-511c-8150-5cd41f4ed4f6\",\n    \"leaderName\": \"culpa aute tempor\"\n}",
+							"raw": "{\n    \"id\": \"a5e57f19-5168-972b-e233-e9c53e45759c\",\n    \"name\": \"sed enim\",\n    \"surname\": \"dolor ex officia\",\n    \"email\": \"incididunt labore aliquip\",\n    \"plateNumber\": -55380635,\n    \"isLeader\": true,\n    \"leaderId\": \"urn:uuid:80825613-cb9a-a5d7-dc56-4ae1d48bd692\",\n    \"leaderName\": \"qui mollit\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -249,10 +88,87 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"a5e57f19-5168-972b-e233-e9c53e45759c\",\n    \"name\": \"sed enim\",\n    \"surname\": \"dolor ex officia\",\n    \"email\": \"incididunt labore aliquip\",\n    \"plateNumber\": -55380635,\n    \"isLeader\": true,\n    \"leaderId\": \"urn:uuid:80825613-cb9a-a5d7-dc56-4ae1d48bd692\",\n    \"leaderName\": \"qui mollit\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"a5e57f19-5168-972b-e233-e9c53e45759c\",\n \"name\": \"sed enim\",\n \"surname\": \"dolor ex officia\",\n \"email\": \"incididunt labore aliquip\",\n \"plateNumber\": -55380635,\n \"isLeader\": true,\n \"leaderId\": \"urn:uuid:80825613-cb9a-a5d7-dc56-4ae1d48bd692\",\n \"leaderName\": \"qui mollit\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"a5e57f19-5168-972b-e233-e9c53e45759c\",\n    \"name\": \"sed enim\",\n    \"surname\": \"dolor ex officia\",\n    \"email\": \"incididunt labore aliquip\",\n    \"plateNumber\": -55380635,\n    \"isLeader\": true,\n    \"leaderId\": \"urn:uuid:80825613-cb9a-a5d7-dc56-4ae1d48bd692\",\n    \"leaderName\": \"qui mollit\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"type\": \"Ut\",\n \"title\": \"dolore sed aute minim\",\n \"status\": 38923334,\n \"detail\": \"deserunt\",\n \"instance\": \"sunt voluptate ipsum\"\n}"
+						}
+					]
 				},
 				{
-					"name": "Employee Details",
+					"name": "Employee Controller Details",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -270,16 +186,91 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "",
+									"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
 									"description": "(Required) "
 								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"a5e57f19-5168-972b-e233-e9c53e45759c\",\n \"name\": \"sed enim\",\n \"surname\": \"dolor ex officia\",\n \"email\": \"incididunt labore aliquip\",\n \"plateNumber\": -55380635,\n \"isLeader\": true,\n \"leaderId\": \"urn:uuid:80825613-cb9a-a5d7-dc56-4ae1d48bd692\",\n \"leaderName\": \"qui mollit\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"type\": \"Ut\",\n \"title\": \"dolore sed aute minim\",\n \"status\": 38923334,\n \"detail\": \"deserunt\",\n \"instance\": \"sunt voluptate ipsum\"\n}"
+						}
+					]
 				},
 				{
-					"name": "Update Employee",
+					"name": "/api/v1/employee/:id",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -290,7 +281,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"c5b627d7-1856-422f-899b-0990385dac66\",\n    \"name\": \"dolor irure in ex sunt\",\n    \"surname\": \"elit culpa nulla est magna\",\n    \"email\": \"in veniam non\",\n    \"plateNumber\": 11625964,\n    \"isLeader\": false,\n    \"leaderId\": \"urn:uuid:f47a1496-149f-511c-8150-5cd41f4ed4f6\",\n    \"leaderName\": \"culpa aute tempor\"\n}",
+							"raw": "{\n    \"id\": \"a5e57f19-5168-972b-e233-e9c53e45759c\",\n    \"name\": \"sed enim\",\n    \"surname\": \"dolor ex officia\",\n    \"email\": \"incididunt labore aliquip\",\n    \"plateNumber\": -55380635,\n    \"isLeader\": true,\n    \"leaderId\": \"urn:uuid:80825613-cb9a-a5d7-dc56-4ae1d48bd692\",\n    \"leaderName\": \"qui mollit\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -311,16 +302,109 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "",
+									"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
 									"description": "(Required) "
 								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"a5e57f19-5168-972b-e233-e9c53e45759c\",\n    \"name\": \"sed enim\",\n    \"surname\": \"dolor ex officia\",\n    \"email\": \"incididunt labore aliquip\",\n    \"plateNumber\": -55380635,\n    \"isLeader\": true,\n    \"leaderId\": \"urn:uuid:80825613-cb9a-a5d7-dc56-4ae1d48bd692\",\n    \"leaderName\": \"qui mollit\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"a5e57f19-5168-972b-e233-e9c53e45759c\",\n    \"name\": \"sed enim\",\n    \"surname\": \"dolor ex officia\",\n    \"email\": \"incididunt labore aliquip\",\n    \"plateNumber\": -55380635,\n    \"isLeader\": true,\n    \"leaderId\": \"urn:uuid:80825613-cb9a-a5d7-dc56-4ae1d48bd692\",\n    \"leaderName\": \"qui mollit\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"type\": \"Ut\",\n \"title\": \"dolore sed aute minim\",\n \"status\": 38923334,\n \"detail\": \"deserunt\",\n \"instance\": \"sunt voluptate ipsum\"\n}"
+						}
+					]
 				},
 				{
-					"name": "Delete Employee",
+					"name": "/api/v1/employee/:id",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -338,13 +422,1008 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "",
+									"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
 									"description": "(Required) "
 								}
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "EmployeeContact",
+			"item": [
+				{
+					"name": "/api/v1/employee/:employeeId/contact",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employee",
+								":employeeId",
+								"contact"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"contact"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": \"d0885acc-3b09-2859-bc7c-80b9906ae873\",\n  \"number\": \"cupidatat officia proident incidid\",\n  \"employeeId\": \"86cf5df6-b712-18c2-f187-91efb8f37c19\"\n },\n {\n  \"id\": \"urn:uuid:7fdcf831-c86f-877c-babd-0bd3810b384d\",\n  \"number\": \"minim ad sunt pariatur\",\n  \"employeeId\": \"b99258e9-feb6-f2eb-b405-0b35382ff734\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "/api/v1/employee/:employeeId/contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"urn:uuid:4ec4da10-100b-8d9f-c436-15a2b332a31b\",\n    \"number\": \"Lorem exercitation eiusmod\",\n    \"employeeId\": \"ebdb8e44-cfb8-1f65-10c6-16b37ddc315d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employee",
+								":employeeId",
+								"contact"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"urn:uuid:4ec4da10-100b-8d9f-c436-15a2b332a31b\",\n    \"number\": \"Lorem exercitation eiusmod\",\n    \"employeeId\": \"ebdb8e44-cfb8-1f65-10c6-16b37ddc315d\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"contact"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"urn:uuid:4ec4da10-100b-8d9f-c436-15a2b332a31b\",\n \"number\": \"Lorem exercitation eiusmod\",\n \"employeeId\": \"ebdb8e44-cfb8-1f65-10c6-16b37ddc315d\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"urn:uuid:4ec4da10-100b-8d9f-c436-15a2b332a31b\",\n    \"number\": \"Lorem exercitation eiusmod\",\n    \"employeeId\": \"ebdb8e44-cfb8-1f65-10c6-16b37ddc315d\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"contact"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"type\": \"Ut\",\n \"title\": \"dolore sed aute minim\",\n \"status\": 38923334,\n \"detail\": \"deserunt\",\n \"instance\": \"sunt voluptate ipsum\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Employee Contact Controller Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employee",
+								":employeeId",
+								"contact",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+									"description": "(Required) "
+								},
+								{
+									"key": "employeeId",
+									"value": "fugiat ea minim",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"contact",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										},
+										{
+											"key": "employeeId",
+											"value": "fugiat ea minim",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"urn:uuid:4ec4da10-100b-8d9f-c436-15a2b332a31b\",\n \"number\": \"Lorem exercitation eiusmod\",\n \"employeeId\": \"ebdb8e44-cfb8-1f65-10c6-16b37ddc315d\"\n}"
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"contact",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										},
+										{
+											"key": "employeeId",
+											"value": "fugiat ea minim",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"type\": \"Ut\",\n \"title\": \"dolore sed aute minim\",\n \"status\": 38923334,\n \"detail\": \"deserunt\",\n \"instance\": \"sunt voluptate ipsum\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/api/v1/employee/:employeeId/contact/:id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"urn:uuid:4ec4da10-100b-8d9f-c436-15a2b332a31b\",\n    \"number\": \"Lorem exercitation eiusmod\",\n    \"employeeId\": \"ebdb8e44-cfb8-1f65-10c6-16b37ddc315d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employee",
+								":employeeId",
+								"contact",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+									"description": "(Required) "
+								},
+								{
+									"key": "id",
+									"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"urn:uuid:4ec4da10-100b-8d9f-c436-15a2b332a31b\",\n    \"number\": \"Lorem exercitation eiusmod\",\n    \"employeeId\": \"ebdb8e44-cfb8-1f65-10c6-16b37ddc315d\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"contact",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										},
+										{
+											"key": "id",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"urn:uuid:4ec4da10-100b-8d9f-c436-15a2b332a31b\",\n    \"number\": \"Lorem exercitation eiusmod\",\n    \"employeeId\": \"ebdb8e44-cfb8-1f65-10c6-16b37ddc315d\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"contact",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										},
+										{
+											"key": "id",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"type\": \"Ut\",\n \"title\": \"dolore sed aute minim\",\n \"status\": 38923334,\n \"detail\": \"deserunt\",\n \"instance\": \"sunt voluptate ipsum\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/api/v1/employee/:employeeId/contact/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employee",
+								":employeeId",
+								"contact",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+									"description": "(Required) "
+								},
+								{
+									"key": "employeeId",
+									"value": "fugiat ea minim",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/contact/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"contact",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "c3dfbe83-3eee-8d27-d811-fec517efe2ca",
+											"description": "(Required) "
+										},
+										{
+											"key": "employeeId",
+											"value": "fugiat ea minim",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "EmployeePassword",
+			"item": [
+				{
+					"name": "/api/v1/employee/:employeeId/password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"nisi aute\",\n    \"oldPassword\": \"aute dolor proident cillum\",\n    \"newPassword\": \"dolor dolor qui\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employee/:employeeId/password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employee",
+								":employeeId",
+								"password"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "fugiat ea minim",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"nisi aute\",\n    \"oldPassword\": \"aute dolor proident cillum\",\n    \"newPassword\": \"dolor dolor qui\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"password"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "fugiat ea minim",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"nisi aute\",\n    \"oldPassword\": \"aute dolor proident cillum\",\n    \"newPassword\": \"dolor dolor qui\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"password"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "fugiat ea minim",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"type\": \"Ut\",\n \"title\": \"dolore sed aute minim\",\n \"status\": 38923334,\n \"detail\": \"deserunt\",\n \"instance\": \"sunt voluptate ipsum\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/api/v1/employee/:employeeId/password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"laborum\",\n    \"password\": \"minim\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employee/:employeeId/password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employee",
+								":employeeId",
+								"password"
+							],
+							"variable": [
+								{
+									"key": "employeeId",
+									"value": "fugiat ea minim",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"laborum\",\n    \"password\": \"minim\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"password"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "fugiat ea minim",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"laborum\",\n    \"password\": \"minim\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/employee/:employeeId/password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"employee",
+										":employeeId",
+										"password"
+									],
+									"variable": [
+										{
+											"key": "employeeId",
+											"value": "fugiat ea minim",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"type\": \"Ut\",\n \"title\": \"dolore sed aute minim\",\n \"status\": 38923334,\n \"detail\": \"deserunt\",\n \"instance\": \"sunt voluptate ipsum\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "/api/Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"laborum\",\n    \"password\": \"minim\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"laborum\",\n    \"password\": \"minim\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"laborum\",\n    \"password\": \"minim\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"type\": \"Ut\",\n \"title\": \"dolore sed aute minim\",\n \"status\": 38923334,\n \"detail\": \"deserunt\",\n \"instance\": \"sunt voluptate ipsum\"\n}"
+						}
+					]
 				}
 			]
 		}
